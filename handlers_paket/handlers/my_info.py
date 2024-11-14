@@ -1,7 +1,8 @@
-#обрабочик для команды /myinfo
+# обрабочик для команды /myinfo
 from aiogram import types, Router
 
 myinfo_router = Router()
+
 
 @myinfo_router.message(commands=["myinfo"])
 async def myinfo_command(message: types.Message):
