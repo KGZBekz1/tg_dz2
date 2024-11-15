@@ -16,6 +16,3 @@ async def random_recipe_command(message: types.Message):
     recipe = random.choice(recipes)
     photo = InputFile(recipe["image"])
     await message.answer_photo(photo, caption=recipe["caption"])
-
-
-

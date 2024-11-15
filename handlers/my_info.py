@@ -1,14 +1,12 @@
 # обрабочик для команды /myinfo
-from aiogram import types, Router
+from aiogram import types, Dispatcher
 
-myinfo_router = Router()
-
-
-@myinfo_router.message(commands=["myinfo"])
-async def myinfo_command(message: types.Message):
-    user_info = (
+async def myinfo_handler(message: types.Message):
+    await message.reply(
         f"Ваш id: {message.from_user.id}\n"
         f"Ваше имя: {message.from_user.first_name}\n"
         f"Ваш никнейм: {message.from_user.username}"
     )
-    await message.answer(user_info)
+
+def register_myinfo(dp: Dispatcher):
+    dp.register_message_handler(myinfo_handler, commands=["myinfo"])
